@@ -1,0 +1,21 @@
+# this file is used to install all packages written below by one command  pip install -r requirements.txt
+numpy
+pandas
+
+# for face recognition
+scikit-learn
+dlib-bin
+
+git+https://github.com/ageitgey/face_recognition_models
+# as it is not python package so to install it we use,
+setuptools<70.0.0
+
+#database
+supabase
+
+bcrypt  #give hashing methods . hashing is used to incrupt password while storing to database.
+
+segno # python library used to make qrcode 
+pillow # give methods related to image in python
+
+streamlit # basic frontend library
