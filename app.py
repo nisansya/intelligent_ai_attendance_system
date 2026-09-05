@@ -10,10 +10,10 @@ def main():
        st.session_state['login_type'] = None
 
     match st.session_state['login_type']:
-        case 'teacher':
+        case 'Teacher':
             teacher_screen()
 
-        case 'student':
+        case 'Student':
             student_screen()
 
         case None:
