@@ -31,7 +31,17 @@ def teacher_login():
                 <div class="welcome-title">
                     Welcome, Teacher!
                 </div>
+                """,
+                unsafe_allow_html=True
+            )
 
+            with st.container(key="picture", border=True):
+                col1,col2,col3= st.columns([1,2,1])
+                with col2:
+                    st.image("assets/teacher_home_img.jpeg", width=220)
+            
+            st.markdown(
+                """
                 <div class="welcome-text">
                     Login to access your dashboard and manage
                     classes & attendance.
@@ -75,11 +85,12 @@ def teacher_login():
                 type="password",
                 label_visibility="collapsed"
             )
-
-            login_button = st.button(
-                "Login →",
-                key="login_btn"
-            )
+            col1,col2, col3= st.columns([3,3,3])
+            with col2:
+                login_button = st.button(
+                    "Login →",
+                    key="login_btn"
+                )
 
             if login_button:
                 
@@ -121,8 +132,10 @@ def teacher_login():
                 unsafe_allow_html=True
             )
 
-            if st.button("Register as Teacher",key="register_btn"):
-                st.session_state.teacher_login_type = "register"
+            col1,col2, col3= st.columns([3,3,3])
+            with col2: 
+                if st.button("Register as Teacher",key="register_btn"):
+                    st.session_state.teacher_login_type = "register"
 
     footer_home()
 
@@ -206,7 +219,9 @@ def register_teacher():
                 label_visibility= 'collapsed'
             )
 
-            register_button= st.button('Register ->', key= 'register_btn')
+            col1,col2, col3= st.columns([3,3,3])
+            with col2:
+                register_button= st.button('Register ->', key= 'register_btn')
             
             if register_button:
                 success, message= dbase_check(teacher_id, teacher_name, password, confirm_password)

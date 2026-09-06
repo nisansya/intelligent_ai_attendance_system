@@ -19,12 +19,26 @@ def teacher_login_background():
             @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
             @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
 
+        /* hide top bar of streamlit */
+        #MainMenu, footer, header {
+            visibility: hidden;
+        }
+
+        .block-container {
+            padding-top: 30px !important;
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+            max-width: None !important;
+            margin:auto;
+            background-color: #c0d3fb;
+        }
+
         /* ================= LEFT PANEL ================= */
 
             .st-key-left_panel {
                 background-color: #dae6fe !important;
                 min-height: 800px !important;
-                padding: 55px 45px !important;
+                padding: 45px 40px !important;
                 border-radius: 18px 0px 0px 18px !important;
                 box-sizing: border-box !important;
             }
@@ -35,7 +49,7 @@ def teacher_login_background():
             .st-key-right_panel {
                 background-color: white !important;
                 min-height: 800px !important;
-                padding: 70px 70px !important;
+                padding: 50px 45px !important;
                 border-radius: 0px 18px 18px 0px !important;
                 box-sizing: border-box !important;
             }
@@ -109,7 +123,7 @@ def teacher_login_background():
                 background-color: #5990ff !important;
                 color: white !important;
                 border-radius: 9px !important;
-                width: 180px !important;
+                width: 230px !important;
                 height: 50px !important;
                 border: none !important;
                 font-size: 16px !important;
@@ -158,6 +172,175 @@ def teacher_login_background():
                 unsafe_allow_html=True
     )
 
+def student_login_background():
+    
+
+    st.set_page_config(
+        page_title="Student Login",
+        page_icon="🎓",
+        layout="wide"
+    )
+
+    st.markdown(
+        """
+        <style>
+                        
+             /* Import Google Fonts */
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+            
+            /* hide top bar of streamlit */
+            #MainMenu, footer, header {
+                visibility: hidden;
+            }
+
+             /* Remove Streamlit default spacing */
+            .block-container {
+                padding-top: 30px !important;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
+                max-width: None !important;
+                margin:auto;
+                background-color: #c0d3fb;
+            }
+
+            /* ================= LEFT PANEL ================= */
+            
+            .st-key-left_panel {
+                background-color: #eef5ff;
+                min-height: 550px;
+                padding: 30px 20px;
+                border-radius: 20px 0px 0px 20px;
+                text-align: center;
+            }
+
+
+            /* ================= RIGHT PANEL ================= */
+
+            .st-key-right_panel {
+                background-color: white;
+                min-height: 650px;
+                padding: 35px 30px;
+                border-radius: 0px 20px 20px 0px;
+                border: 1px solid #e5eaf2;
+                text-align: center;
+            }
+
+            /* Titles */
+            .welcome-title {
+                font-size: 40px;
+                font-weight: 700;
+                text-align: center !important;
+                font-family: 'Oswald', sans-serif !important;
+                color: #102a56;
+                margin-top: 80px;
+            }
+
+            .welcome-text {
+                font-size: 20px;
+                text-align: center !important;
+                font-family: 'Outfit', sans-serif !important;
+                color: #52627a;
+                line-height: 1.6;
+                margin-top: 20px;
+            }
+
+            .login-title {
+                font-size: 38px;
+                font-weight: 700;
+                text-align: center !important;
+                font-family: 'Oswald', sans-serif !important;
+                color: #17233c;
+                margin-bottom: 8px;
+            }
+
+            .login-text {
+                color: #60708c;
+                font-size: 17px;
+                text-align: center !important;
+                font-family: 'Outfit', sans-serif !important;
+                margin-bottom: 25px;
+            }
+
+            /* Face area */
+            .st-key-face_box {
+                background-color: #f1f6ff;
+                border-radius: 15px;
+                padding: 20px;
+                margin: 0 auto;
+                max-width: 380px;
+            }
+
+            .face-circle {
+                width: 180px;
+                height: 180px;
+                border-radius: 50%;
+                border: 6px solid #5990ff;
+                margin: auto;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 75px;
+                background-color: white;
+            }
+
+            .face-status {
+                margin-top: 20px;
+                font-size: 16px;
+                font-family: 'Outfit', sans-serif !important;
+                color: #40516e;
+                text-align: center !important;
+            }
+
+            .green-dot {
+                color: green;
+                font-size: 20px;
+            }
+
+            /* Buttons */
+            .stButton > button {
+                width: 250px;
+                align-items: center !important;
+                text-align: center !important
+                height: 50px;
+                border-radius: 9px;
+                border: none;
+                background-color: #2563eb;
+                color: white;
+                font-size: 16px;
+                font-weight: 600;
+            }
+
+            .stButton > button:hover {
+                background-color: #1d4ed8;
+            }
+
+            /* OR divider */
+            .divider {
+                display: flex;
+                align-items: center;
+                margin: 25px 0;
+                color: #8b96a8;
+            }
+
+            .divider::before,
+            .divider::after {
+                content: "";
+                flex: 1;
+                height: 1px;
+                background: #dfe4ec;
+            }
+
+            .divider span {
+                padding: 0 15px;
+            }
+
+        </style>
+        
+        """,
+        unsafe_allow_html=True
+                                
+    )
 
 def style_base_layout():
     st.markdown(

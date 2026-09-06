@@ -19,3 +19,6 @@ segno # python library used to make qrcode
 pillow # give methods related to image in python
 
 streamlit # basic frontend library
+
+librosa
+resemblyzer

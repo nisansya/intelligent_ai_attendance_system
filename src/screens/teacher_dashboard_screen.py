@@ -1,5 +1,5 @@
 import streamlit as st
-from src.ui.base_layout import style_base_layout, style_dashboard_background
+from src.ui.base_layout import style_base_layout, teacher_login_background
 from src.components.footer import footer_home
 
 def teacher_dashboard():

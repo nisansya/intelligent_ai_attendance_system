@@ -9,6 +9,10 @@ def home_screen():
 
     style_base_layout()
     style_home_background()
+    with st.container(key="picture", border=True):
+        col1,col2,col3= st.columns([1,2,1])
+        with col2:
+            st.image("assets/home_img1.jpeg", width=220)
 
     st.markdown(
         """
