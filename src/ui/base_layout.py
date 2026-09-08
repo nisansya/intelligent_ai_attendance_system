@@ -172,6 +172,188 @@ def teacher_login_background():
                 unsafe_allow_html=True
     )
 
+def teacher_dashboard_background():
+
+    st.set_page_config(
+        page_title="Teacher Dashboard",
+        page_icon="🎓",
+        layout="wide",
+        initial_sidebar_state= "expanded"
+    )
+
+    st.markdown(
+        """
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+            @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
+        /* hide top bar of streamlit */
+        #MainMenu, footer, header {
+            visibility: hidden !important;
+        }
+
+        .block-container {
+            padding-top: 30px !important;
+            padding-left: 30px !important;
+            padding-right: 30px !important;
+            max-width: None !important;
+            margin:auto;
+            background-color: #c0d3fb;
+        }
+
+        section[data-testid="stSidebar"]{
+            background-color: #f0f8ff !important;
+            border-right: 1px solid #dce6f5 !important;
+        }
+
+        /* Sidebar title */
+        .sidebar-title {
+            font-size: 22px;
+            font-weight: 700;
+            color: #17365d;
+            margin-bottom: 30px;
+        }
+
+        .st-key-right_panel {
+            background-color: white !important;
+            min-height: 800px !important;
+            padding: 35px 30px !important;
+            border-radius: 0px 18px 18px 0px !important;
+            box-sizing: border-box !important;
+        }
+
+        /* Main heading */
+        .main-title {
+            font-size: 38px !important;
+            font-weight: 700 !important;
+            color: #142d52 !important;
+            margin-bottom: 5px !important;
+        }
+
+        .subtitle {
+            font-size: 18px !important;
+            color: #60728f !important;
+            margin-bottom: 30px !important;
+        }
+
+        /* Profile */
+        .profile {
+            text-align: right !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
+            color: #17365d !important;
+            margin-bottom: 20px !important;
+        }
+
+        /* Cards */
+        .card {
+            padding: 25px !important;
+            border-radius: 12px !important;
+            min-height: 170px !important;
+            border: 1px solid #dbe7f5 !important;
+            margin-bottom: 20px !important;
+        }
+
+        .attendance-card {
+            background-color: #edf6ff !important;
+        }
+
+        .subject-card {
+            background-color: #eefbf5 !important;
+        }
+
+        .record-card {
+            background-color: #f5f0ff !important;
+        }
+
+        .card-icon {
+            font-size: 35px;
+            margin-bottom: 10px;
+        }
+
+        .card-title {
+            font-size: 21px;
+            font-weight: 700;
+            color: #142d52;
+            margin-bottom: 8px;
+        }
+
+        .card-text {
+            font-size: 15px;
+            color: #60728f;
+        }
+
+        /* Section */
+        .section-box {
+            background-color: white;
+            border: 1px solid #dbe7f5;
+            border-radius: 12px;
+            padding: 25px;
+            margin-top: 10px;
+        }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: #142d52;
+            margin-bottom: 20px;
+        }
+
+        /* Buttons */
+        .stButton > button {
+            border-radius: 8px !important;
+            border: none !important;
+            background-color: #287bea !important;
+            color: white !important;
+            font-weight: 600 !important;
+            padding: 10px 18px !important;
+        }
+
+        .stButton > button:hover {
+            background-color: #1769d1 !important;
+            color: white !important;
+        }
+
+        /* Sidebar buttons */
+        section[data-testid="stSidebar"] .stButton > button {
+            width: 100% !important;
+            background-color: #287bea !important;
+            color: white !important;
+            text-align: left !important;
+            border-radius: 8px !important;
+            border: none !important;
+            padding: 12px !important;
+            font-size: 16px !important;
+        }
+        
+        
+        button p{
+            color: blue;
+        }
+        section[data-testid="stSidebar"] .stButton > button:hover {
+            background-color: #dceaff !important;
+            color: #1769d1 !important;
+        }
+
+        div[data-testid="stMain"] .stButton >button,
+        div[data-testid="stMain"] .stButton >button p {
+            color: white !important;
+            
+        }
+
+        section[data-testid="stSidebar"] .stButton> button,
+        section[data-testid="stSidebar"] .stButton> button p,
+        section[data-testid="stSidebar"] .stButton> button span,
+        section[data-testid="stSidebar"] .stButton> button div {
+            color: #0d47a1;
+        }
+
+        </style>
+
+        """,
+        unsafe_allow_html=True
+    )
+
 def student_login_background():
     
 
@@ -201,7 +383,7 @@ def student_login_background():
                 padding-right: 20px !important;
                 max-width: None !important;
                 margin:auto;
-                background-color: #c0d3fb;
+                background-color: #1a2b4c;
             }
 
             /* ================= LEFT PANEL ================= */
@@ -210,7 +392,7 @@ def student_login_background():
                 background-color: #eef5ff;
                 min-height: 550px;
                 padding: 30px 20px;
-                border-radius: 20px 0px 0px 20px;
+                border-radius: 30px 0px 0px 30px;
                 text-align: center;
             }
 
@@ -218,10 +400,10 @@ def student_login_background():
             /* ================= RIGHT PANEL ================= */
 
             .st-key-right_panel {
-                background-color: white;
-                min-height: 650px;
+                background-color: #c0d3fb;
+                min-height: 800px;
                 padding: 35px 30px;
-                border-radius: 0px 20px 20px 0px;
+                border-radius: 0px 30px 30px 0px;
                 border: 1px solid #e5eaf2;
                 text-align: center;
             }
@@ -264,7 +446,7 @@ def student_login_background():
 
             /* Face area */
             .st-key-face_box {
-                background-color: #f1f6ff;
+                background-color: #1a2b4c;
                 border-radius: 15px;
                 padding: 20px;
                 margin: 0 auto;
@@ -292,9 +474,41 @@ def student_login_background():
                 text-align: center !important;
             }
 
-            .green-dot {
-                color: green;
-                font-size: 20px;
+            
+
+            .register-title {
+                font-size: 38px !important;
+                font-weight: 700 !important;
+                text-align: center !important;
+                font-family: 'Oswald', sans-serif !important;
+                color: #17233c !important;
+                margin-bottom: 8px !important;
+            }
+
+            .input-label {
+                font-size: 14px !important;
+                font-weight: 600 !important;
+                color: #33415c !important;
+                font-family: 'Outfit', sans-serif !important;
+                margin-bottom: 7px !important;
+            }
+
+            .stAudioInput label{
+                color: black !important;
+            }
+
+            div[data-testid="stAlert"] *{
+                color: black !important
+            }
+
+
+            .voice-enroll-text {
+                font-size: 20px !important;
+                text-align: center !important;
+                font-family: 'Outfit', sans-serif !important;
+                color: #52627a !important;
+                line-height: 1.6 !important;
+                margin-top: 20px !important; 
             }
 
             /* Buttons */
