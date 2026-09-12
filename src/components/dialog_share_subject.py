@@ -6,7 +6,7 @@ import io
 
 @st.dialog("Share Class Link")
 def share_subject_dialog(sub_name, subject_code):
-    app_domain="IAIAS-main.streamlit.app"
+    app_domain="iaias-main.streamlit.app"
     join_url= f"{app_domain}/?join-code={subject_code}"
 
     st.header("Scan to Join")
