@@ -40,7 +40,7 @@ def teacher_login():
             with st.container(key="picture", border=True):
                 col1,col2,col3= st.columns([1,2,1])
                 with col2:
-                    st.image("assets/teacher_home_img.jpeg", width=220)
+                    st.image("assets/face-recog-logo.jpg", width=220)
             
             st.markdown(
                 """

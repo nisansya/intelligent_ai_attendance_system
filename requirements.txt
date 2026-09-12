@@ -1,3 +1,5 @@
+streamlit # basic frontend library
+
 # this file is used to install all packages written below by one command  pip install -r requirements.txt
 numpy
 pandas
@@ -18,7 +20,6 @@ bcrypt  #give hashing methods . hashing is used to incrupt password while storin
 segno # python library used to make qrcode 
 pillow # give methods related to image in python
 
-streamlit # basic frontend library
 
 librosa
 resemblyzer

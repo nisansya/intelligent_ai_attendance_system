@@ -12,7 +12,8 @@ from src.pipelines.voice_pipeline import get_voice_embedding
 
 def student_screen():
     
-    login_page()
+    if "student_data" not in st.session_state:
+        login_page()
     if "student_data" in st.session_state:
         student_dashboard() 
 
@@ -75,17 +76,52 @@ def login_page():
                 unsafe_allow_html=True
             )
             with st.container(key="face_box", border=True):
+                st.write('Add classroom photos to scan for attendance')
+                
+                if 'photo_tab' not in st.session_state:
+                    st.session_state.photo_tab= 'camera'
+            
+                c1, c2= st.columns(2)
+                with c1:
+                    type_camera= "primary" if st.session_state.photo_tab =='camera' else 'tertiary'
+                    if st.button('Camera', type=type_camera ):
+                        st.session_state.photo_tab= 'camera'
+            
+                with c2:
+                        type_upload= "primary" if st.session_state.photo_tab =='upload' else 'tertiary'
+                        if st.button('Upload Photos', type=type_upload):
+                            st.session_state.photo_tab= 'upload'
+                photo= None
                 show_registration= False
-                photo= st.camera_input("Position your face in the frame", key="student_face_camera", label_visibility="collapsed")
+                if st.session_state.photo_tab == 'camera':
+                    cam_photo= st.camera_input("Take snapshot", key="dialog_cam")
+                    photo= cam_photo
+                    # if cam_photo:
+                    #     st.session_state.attendance_images.append(Image.open(cam_photo))
+                    #     st.toast("photo captured")
+                    #     st.rerun()
+            
+                if st.session_state.photo_tab == 'upload':
+                        uploaded_file= st.file_uploader('choose image file', type=['jpg', 'png', 'jpeg'], key= 'dialog_upload')
+                        photo= uploaded_file
+                        # if uploaded_files:
+                        #     for f in uploaded_files:
+                        #         st.session_state.attendance_images.append(Image.open(f))
+                        #     st.toast("photo uploaded successfully")
+                        #     st.rerun()
+                #photo= st.camera_input("Position your face in the frame", key="student_face_camera", label_visibility="collapsed")
                 if photo:
+                    #pil_img= Image.open(photo).convert("RGB")
                     img= np.array(Image.open(photo))
+                    #st.session_state.last_pil_img= pil_img
+                    #img= np.array(pil_img)
 
                     with st.spinner('AI is scanning'):
                         detected, all_ids, num_faces= predict_attendance(img)
 
                         if num_faces==0:
                             st.warning('Face not found!')
-                        if num_faces >1:
+                        elif num_faces >1:
                             st.warning('Multiple faces found!')
                         else:
                             if detected:
@@ -152,6 +188,8 @@ def login_page():
                             if new_name:
                                 with st.spinner("Creating profile.."):
                                     img= np.array(Image.open(photo))
+                                    #pil_img= st.session_state.last_pil_img
+                                    #img= np.array(pil_img)
                                     encoding= get_face_embedding(img) 
                                     if encoding:
                                         face_emb= encoding[0].tolist()

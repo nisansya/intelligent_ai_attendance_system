@@ -6,6 +6,10 @@ from src.screens.student_screen import student_screen
 
 
 def main():
+    st.set_page_config(
+        page_title= 'Intelligent AI Attendance System - Making Attendance faster using AI',
+        page_icon="face-recog-logo.jpg"
+    )
     if 'login_type' not in st.session_state:
        st.session_state['login_type'] = None
 

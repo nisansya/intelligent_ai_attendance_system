@@ -60,3 +60,37 @@ def get_teacher_subjects(teacher_id):
         sub.pop('subject_students', None)
         sub.pop('attendance_logs', None)
     return subjects
+
+def enroll_student_to_subject(student_id, subject_id):
+    data= {'student_id': student_id, 'subject_id': subject_id}
+    response= supabase.table('subject_students').insert(data).execute()
+    return response.data
+
+def unenroll_student_to_subject(student_id, subject_id):
+    response= supabase.table('subject_students').delete().eq('student_id', student_id).execute()
+    return response.data
+
+def get_student_subjects(student_id):
+    response= supabase.table('subject_students').select('*, subjects(*, teachers(*))').eq('student_id', student_id).execute()
+    return response.data
+
+def get_total_student_subjects(student_id):
+    response= supabase.table('subject_students').select('*', count="exact").eq('student_id', student_id).execute()
+    return response.count if response.count is not None else len(response.data)
+
+def get_total_attendance(student_id):
+    response= supabase.table('attendance_logs').select("*", count="exact").eq('student_id', student_id).eq('is_present', 'True').execute()
+    return response.count
+
+def get_subject_attendance(student_id, subject_id):
+    response= supabase.table('attendance_logs').select("*", count= "exact").eq('student_id', student_id).eq('subject_id', subject_id).eq('is_present', 'True').execute()
+    present_count= response.count or 0
+    return present_count
+
+def create_attendance(logs):
+    response= supabase.table('attendance_logs').insert(logs).execute()
+    return response.data
+
+def get_attendance_for_teacher(teacher_id):
+    response= supabase.table('attendance_logs').select("*, subjects!inner(*)").eq('subjects.teacher_id', teacher_id).execute()
+    return response.data
