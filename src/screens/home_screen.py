@@ -20,11 +20,11 @@ def home_screen():
         """,
         unsafe_allow_html=True
     )
-    if st.button('👩🏼‍🏫 Teacher'):
+    if st.button('👩🏼‍🏫 Teacher', type='primary', width= 'stretch'):
         st.session_state['login_type'] = 'Teacher'
         st.rerun()
     
-    if st.button('🎓 Student'):
+    if st.button('🎓 Student', type= 'primary', width='stretch'):
         st.session_state['login_type'] = 'Student'
         st.rerun()
 
