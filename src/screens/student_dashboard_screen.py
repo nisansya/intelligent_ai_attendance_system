@@ -35,18 +35,18 @@ def student_dashboard():
         if st.button("📓 My Subjects", type='secondary', width='stretch'):
             st.session_state.page= "Subjects"
 
-        if st.button("👤 Profile", type='secondary', width='stretch'):
-            st.session_state.page= "Profile"
-
         st.markdown(" <br><br><br><br><br>", unsafe_allow_html=True)
 
         if st.button("-> Logout", type='primary', width='stretch'):
-            st.session_state.page= "Logout"
+            st.session_state.clear()
+            st.switch_page('app.py')
+
             st.rerun()
 
     if st.session_state.page == "Subjects":
-            student_tab_subjects()
-        
+        student_tab_subjects()
+
+
 
     if st.session_state.page=="Home":
         with st.container(key="right_panel"):
@@ -124,10 +124,6 @@ def student_dashboard():
                 st.session_state.active_section= "enroll in subject" 
                 st.rerun()
 
-            if st.button("📷 Mark Attendance", key="markattendance", type="primary", width='stretch'):
-                st.session_state.active_section= "mark attendance" 
-                st.rerun() 
-
             if st.session_state.active_section == "enroll in subject":
                 st.markdown(
                     "<div style='height: 40px;'></div>",
@@ -135,22 +131,6 @@ def student_dashboard():
                 )
                 student_tab_enroll_subject()
 
-            
-                
-
-            # elif st.session_state.active_section == "Subjects":
-            #     st.markdown(
-            #         "<div style='height: 30px;'></div>",
-            #         unsafe_allow_html=True
-            #     )
-            #     teacher_tab_manage_subjects()
-
-            # if st.session_state.active_section == "Attendance Records":
-            #     teacher_tab_attendance_records()
-
-
-def teacher_tab_take_attendance():
-    st.header("Take AI Attendance")
 
 def student_tab_enroll_subject():   
 
@@ -270,8 +250,6 @@ def student_tab_subjects():
                 """,
                 unsafe_allow_html=True
                 )
-
-
 
 
                 

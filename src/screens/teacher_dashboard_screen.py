@@ -27,9 +27,7 @@ def teacher_dashboard():
     if "active_section" not in st.session_state:
         st.session_state.active_section= None
 
-    
-
-    #st.header(f"""Welcome, {teacher_data['name']}""") 
+     
     with st.sidebar:
         st.markdown(
             """
@@ -57,7 +55,8 @@ def teacher_dashboard():
         st.markdown(" <br><br><br><br><br>", unsafe_allow_html=True)
 
         if st.button("-> Logout", type='primary', width='stretch'):
-            st.session_state.page= "logout"
+            st.session_state.clear()
+            st.switch_page("app.py")
 
     with st.container(key="right_panel"):
         
@@ -157,106 +156,8 @@ def teacher_dashboard():
             if st.session_state.page == "Attendance Records":
                 teacher_tab_attendance_records()
 
-    # if st.session_state.page=="home":
-    #     with st.container(key="right_panel"):
-        
-    #         st.markdown(
-    #             f"""
-    #             <div class="profile"> 
-    #                 👤 Ms. {teacher_data['name']} 
-    #             </div>
-
-    #             <div class="main-title"> 
-    #                 Welcome, Teacher!
-    #             </div>
-
-    #             <div class="subtitle">
-    #                 Manage your classes and attendance easily. 
-    #             </div>
-    #             """,
-    #             unsafe_allow_html=True
-    #         )
-
-    #         col1,col2,col3= st.columns(3)
-
-    #         with col1:
-    #             with st.container(key="card attendance-card"):
-    #                 st.markdown(
-    #                     """
-    #                     <div class="card-icon">👥<div>
-
-    #                     <div class="card-title">
-    #                         Take Attendance
-    #                     </div>
-
-    #                     <div class="card-text">
-    #                         Mark attendance for your class.
-    #                     </div>
-    #                     """,
-    #                     unsafe_allow_html=True
-    #                 )
-
-    #                 if st.button("Take Attendance ->", key="home_attendance"):
-    #                     st.session_state.active_section= "Take Attendance"
-    #                     st.rerun()
-
-    #         with col2:
-    #             with st.container(key="card subject-card"):
-    #                 st.markdown(
-    #                     """
-    #                     <div class="card-icon">📓<div>
-
-    #                     <div class="card-title">
-    #                         Manage Subjects
-    #                     </div>
-
-    #                     <div class="card-text">
-    #                         Add, edit or view subjects.
-    #                     </div>
-    #                     """,
-    #                     unsafe_allow_html=True
-    #                 )
-
-    #                 if st.button("Manage Subjects ->", key="home_subject"):
-    #                     st.session_state.active_section= "Subjects"
-                        
-    #                     st.rerun()
-
-    #         with col3:
-    #             with st.container(key="card record-card"):
-    #                 st.markdown(
-    #                     """
-    #                     <div class="card-icon">📄<div>
-
-    #                     <div class="card-title">
-    #                         View Attendance Records
-    #                     </div>
-
-    #                     <div class="card-text">
-    #                         Check past attendance details.
-    #                     </div>
-    #                     """,
-    #                     unsafe_allow_html=True
-    #                 )
-
-    #                 if st.button("View Records ->", key="home_records"):
-    #                     st.session_state.active_section= "Attendance Records" 
-    #                     st.rerun()
-    #         if st.session_state.active_section == "Take Attendance":
-    #                     teacher_tab_take_attendance()
-                
-    #         if st.session_state.active_section == "Subjects":
-    #             st.markdown(
-    #                 "<div style='height: 30px;'></div>",
-    #                 unsafe_allow_html=True
-    #             )
-    #             teacher_tab_manage_subjects()
-            
-    #         if st.session_state.active_section == "Attendance Records" or st.session_state.page== 'Attendance Records':
-    #             teacher_tab_attendance_records()
-
-
-
+   
+    
 def teacher_tab_take_attendance():
     
     teacher_id= st.session_state.teacher_data['teacher_id']
@@ -359,59 +260,7 @@ def teacher_tab_take_attendance():
 
         if st.session_state.get("show_voice", False):
             voice_attendance_dialog(selected_subject_id)
-            # try:
-            #     audio_data= st.audio_input('Record a short phrase like I am present, My name is Vanshu.')
             
-            # except Exception:
-            #     st.error("Audio Data failed!")
-            # with st.spinner('Processing Audio data'):
-            #     voice_emb= None
-            #     if audio_data:
-            #         st.header('true')
-            #         #voice_emb= get_voice_embedding(audio_data.read())
-            #         enrolled_res_v= supabase.table('subject_students').select("*, students(*)").eq('subject_id', selected_subject_id).execute()
-            #         enrolled_students= enrolled_res_v.data
-            #         if not enrolled_students:
-            #             st.warning('No students enrolled in this course')
-
-            #         else:
-            #             candidates_dict= {
-            #                 s['students']['student_id'] : s['students']['voice_embedding']
-            #                 for s in enrolled_students if s['students'].get('voice_embedding')
-            #             }
-            #             if not candidates_dict:
-            #                 st.error('No enrollled students have voice profiles registered')
-            #             audio_bytes= audio_data.read()  
-            #             best_detected_scores= process_bulk_audio(audio_bytes, candidates_dict)
-            #             results, attendance_to_log= [], []
-            #             current_timestemp= datetime.now().strftime("%Y-%m-%dT%H:%M:%S")
-            #             for node in enrolled_students:
-            #                 student= node['students']
-            #                 score= best_detected_scores.get(student['student_id'], 0.0)
-            #                 is_present= bool(score > 0)
-
-            #                 results.append({
-            #                     "Name": student['name'],
-            #                     "ID": student['student_id'],
-            #                     "Source": score if is_present else "-",
-            #                     "Status": "✅ Present" if is_present else "❎ Absent"
-            #                 })
-
-            #                 attendance_to_log.append({
-            #                     'student_id' : student['student_id'],
-            #                     'subject_id': selected_subject_id,
-            #                     'timestamp': current_timestemp,
-            #                     'is_present': bool(is_present)
-            #                 })
-
-            #             attendance_result_dialog(pd.DataFrame(results), attendance_to_log)
-                            
-
-
-
-
-                
-
 
 
 def teacher_tab_manage_subjects():
