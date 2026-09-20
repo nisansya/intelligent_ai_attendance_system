@@ -99,21 +99,22 @@ def teacher_login():
                 if not teacher_id or not password:
                     st.error("All fields are required to enter.")
 
-                teacher= teacher_login_db(teacher_id, password)
-                if teacher:
-                    st.session_state.user_role= "teacher"
-                    st.session_state.teacher_data= teacher
-                    st.session_state.teacher_page= "dashboard"
-                    st.session_state.is_logged_in= True
-                    st.success("Login successful!")
-
-                    #st.toast("Welcome back!", icon="🎉")
-                    import time 
-                    time.sleep(1)
-                    st.rerun()
-                
                 else:
-                    st.error("Invalid username and password combo")
+                    teacher= teacher_login_db(teacher_id, password)
+                    if teacher:
+                        st.session_state.user_role= "teacher"
+                        st.session_state.teacher_data= teacher
+                        st.session_state.teacher_page= "dashboard"
+                        st.session_state.is_logged_in= True
+                        st.success("Login successful!")
+
+                        #st.toast("Welcome back!", icon="🎉")
+                        import time 
+                        time.sleep(1)
+                        st.rerun()
+                
+                    else:
+                        st.error("Invalid username and password combo")
 
                 
             st.markdown(
