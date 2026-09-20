@@ -127,7 +127,7 @@ def teacher_login():
 
             st.markdown(
                 """
-                <div class="register-text">
+                <div class="register-text style="color: blue;">
                     Don't have an account?
                 </div>
                 """,
@@ -205,7 +205,7 @@ def register_teacher():
                 unsafe_allow_html=True
             )
             password= st.text_input(
-                "password", 
+                "password1", 
                 placeholder= 'Enter your Password', 
                 type= 'password', 
                 label_visibility= 'collapsed'
@@ -242,4 +242,4 @@ def register_teacher():
                     "</div>", unsafe_allow_html=True
                     ) 
 
-    footer_home()        
+            

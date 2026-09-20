@@ -54,7 +54,7 @@ def student_dashboard():
             st.markdown(
                 f"""
                 <div class="profile"> 
-                    👤 Ms. {student_data['name']} 
+                    👤 {student_data['name']} 
                 </div>
 
                 <div class="main-title"> 

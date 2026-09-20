@@ -63,7 +63,7 @@ def teacher_dashboard():
             st.markdown(
                 f"""
                 <div class="profile"> 
-                    👤 Ms. {teacher_data['name']} 
+                    👤 {teacher_data['name']} 
                 </div>
 
                 <div class="main-title"> 

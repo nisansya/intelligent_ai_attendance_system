@@ -123,7 +123,6 @@ def teacher_login_background():
                 background-color: #5990ff !important;
                 color: white !important;
                 border-radius: 9px !important;
-                width: 230px !important;
                 height: 50px !important;
                 border: none !important;
                 font-size: 16px !important;
@@ -155,6 +154,15 @@ def teacher_login_background():
             .divider span {
                 padding: 0 15px !important;
             }
+
+            div[data-testid="stAlert"] *{
+                color: black !important
+            }
+
+            div[data-testid="stInfo"] *{
+                color: black !important
+            }
+
 
 
             /* ================= REGISTER TEXT ================= */
@@ -298,6 +306,14 @@ def teacher_dashboard_background():
             font-weight: 700;
             color: #142d52;
             margin-bottom: 20px;
+        }
+
+        div[data-testid="stAlert"] *{
+            color: black !important
+        }
+
+        div[data-testid="stInfo"] *{
+            color: black !important
         }
 
         /* Buttons */
@@ -499,6 +515,10 @@ def student_login_background():
             }
 
             div[data-testid="stAlert"] *{
+                color: black !important
+            }
+
+            div[data-testid="stInfo"] *{
                 color: black !important
             }
 
@@ -842,6 +862,14 @@ def style_base_layout():
                     font-size: 50px !important;
                     font-weight: 700 !important;
                     
+                }
+
+                div[data-testid="stAlert"] *{
+                    color: black !important
+                }
+
+                div[data-testid="stInfo"] *{
+                    color: black !important
                 }
 
                 button[kind= "secondary"] {
