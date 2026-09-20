@@ -23,6 +23,8 @@ def enroll_subject_dialog(student_id):
                     import time 
                     time.sleep(1)
                     st.rerun()
-                
+           else:
+               st.warning('No subject of this code is available for enrollment right now.')
+               st.info('Reason: Your teacher has not added that subject yet. Please check back later or contact your teacher.')   
         else:
             st.warning("Please enter above details")
